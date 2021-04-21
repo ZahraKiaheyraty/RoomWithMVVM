@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RoomSample</string>
+    <string name="title">Title</string>
+    <string name="text">Text</string>
+</resources>
