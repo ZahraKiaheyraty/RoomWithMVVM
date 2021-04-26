@@ -1,9 +1,7 @@
 package com.kia.roomsample
 
-import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

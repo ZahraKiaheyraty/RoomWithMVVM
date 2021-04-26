@@ -7,17 +7,15 @@ import javax.inject.Inject
 
 class Repository @Inject constructor(var local: Local) {
 
-
     suspend fun insertToDbInRepository(e: Entity) {
         local.insertToDb(e)
     }
 
-    suspend fun deleteDetailsFromDbInRepository(e: Entity){
+    suspend fun deleteDetailsFromDbInRepository(e: Entity) {
         local.deleteItemDb(e)
     }
 
     fun getDetailsFromDbInRepository(): Flow<List<Entity>> {
         return local.getDetailsFromDb()
     }
-
 }

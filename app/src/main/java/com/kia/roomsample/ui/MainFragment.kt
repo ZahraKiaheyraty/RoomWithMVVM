@@ -15,8 +15,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import javax.inject.Inject
-import javax.inject.Named
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main), Adapter.CallBackAdapter {
@@ -24,60 +22,39 @@ class MainFragment : Fragment(R.layout.fragment_main), Adapter.CallBackAdapter {
     private val scopeRequest = CoroutineScope(Dispatchers.Main)
     var status = 0
 
-    @Inject
-    @Named("b")
-    lateinit var t: String
-
-
     lateinit var binding: FragmentMainBinding
     lateinit var adapter: Adapter
-    lateinit var myData:ArrayList<Entity>
+    lateinit var myData: ArrayList<Entity>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
-
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentMainBinding.bind(view)
         super.onViewCreated(view, savedInstanceState)
 
-
         Log.e("TAG", "onViewCreated ")
-
-
 
         collectDetails()
         viewModel.getDetails()
 
-
-
-
         binding.insert.setOnClickListener {
-
-
             lifecycleScope.launch {
-
                 insert()
-
             }
-
-
         }
-
-
-
     }
 
     private fun insert() {
-        viewModel.insertToDb(Entity(binding.editInsert.text.toString(),binding.editFamilyname.text.toString()))
+        viewModel.insertToDb(
+            Entity(
+                binding.editInsert.text.toString(),
+                binding.editFamilyname.text.toString()
+            )
+        )
         viewModel.getDetails()
-
-
     }
 
     private fun collectDetails() {
@@ -85,9 +62,9 @@ class MainFragment : Fragment(R.layout.fragment_main), Adapter.CallBackAdapter {
             viewModel.collectDetails.collect {
                 when (it) {
                     is MainViewModel.CollectDataBase.GetDetails -> {
-                        it.listStatus.collect {list->
+                        it.listStatus.collect { list ->
 
-                          setUpRecyclerView(list)
+                            setUpRecyclerView(list)
 
                         }
                     }
@@ -97,23 +74,17 @@ class MainFragment : Fragment(R.layout.fragment_main), Adapter.CallBackAdapter {
         }
     }
 
-
-
-    private fun setUpRecyclerView(item:List<Entity>){
-        adapter = Adapter(item,this)
+    private fun setUpRecyclerView(item: List<Entity>) {
+        adapter = Adapter(item, this)
         binding.apply {
             mainRecyclerView.adapter = adapter
         }
     }
 
-    override fun sendData(view: ImageView,e: Entity) {
-
-
-       view.setOnClickListener {
-           viewModel.deleteItemDb(e)
-           viewModel.getDetails()
-       }
+    override fun sendData(view: ImageView, e: Entity) {
+        view.setOnClickListener {
+            viewModel.deleteItemDb(e)
+            viewModel.getDetails()
+        }
     }
-
-
 }

@@ -9,10 +9,8 @@ interface MyDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(e: Entity)
 
-
     @Delete
     suspend fun deleteDetails(e: Entity)
-
 
     @Query("SELECT * FROM entity")
     fun getCheckStatusList(): Flow<List<Entity>>

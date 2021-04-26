@@ -21,24 +21,17 @@ class Adapter(
         return TodoViewHolder(view)
     }
 
-
     override fun getItemCount(): Int = item.size
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
         holder.itemView.apply {
 
             txt_name_item.text = item[position].title
-            txt_familyname_item.text=item[position].text
-            data.sendData(clear,item[position])
-
+            txt_familyname_item.text = item[position].text
+            data.sendData(clear, item[position])
         }
     }
-    
-    
-    
-    
-    interface CallBackAdapter{
-        fun sendData(view:ImageView,data: Entity)
+
+    interface CallBackAdapter {
+        fun sendData(view: ImageView, data: Entity)
     }
-
-
 }

@@ -8,5 +8,5 @@ data class Entity(
     var title: String? = null,
     var text: String? = null,
     @PrimaryKey(autoGenerate = false)
-    val id: Int?=null,
-    )
+    val id: Int? = null,
+)

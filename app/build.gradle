@@ -52,28 +52,24 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
-
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
 
     //----------------- room -----------------
     implementation room.room
     kapt room.roomKapt
     implementation room.roomCoroutines
 
-
-
     //----------------- hilt -----------------
     implementation hilt.hilt
     kapt hilt.hiltKapt
     implementation hilt.hiltLifecycle
     implementation hilt.hiltcompiler
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
 
     //----------------- coroutines -----------------
     implementation coroutines.coroutines
     implementation coroutines.coroutinesCore
     implementation coroutines.coroutiensLifeCycleViewModel
     implementation activity.activityKtx
-    //implementation fragment.fragmentKtx
+
 
 }
